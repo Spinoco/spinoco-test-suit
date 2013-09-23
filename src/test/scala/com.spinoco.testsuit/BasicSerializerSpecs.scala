@@ -3,7 +3,8 @@ package com.spinoco.testsuit
 import java.util.{Calendar, Date}
 import org.joda.time.DateTime
 import org.bson.types.ObjectId
-
+import scala.pickling._
+import json._
 /**
  *
  * User: pach
@@ -13,14 +14,15 @@ import org.bson.types.ObjectId
  */
 trait BasicSerializerSpecs extends SerializerFactorySpecs {
   def basicTests() = {
-    it("should serialize simple type message") {
-      doSerialization(SimpleMessage(true, 1, 2, 3, 4L, 2.2, 4.4f, "OMG String here !!",
+   it("should serialize simple type message") {
+     val msg = SimpleMessage(true, 1, 2, 3, 4L, 2.2, 4.4f, "OMG String here !!",
         new ObjectId(), Id.generate, new Date(System.currentTimeMillis()), Calendar.getInstance(), new DateTime(0),
         EnumForTest.ENUM_ONE,
         SimpleStringMessage("first"), SimpleStringMessage("second")
-      ))
+      )
+      doSerialization(msg, (_ : SimpleMessage) => {})
     }
-    it("should serialize simple option message") {
+   it("should serialize simple option message") {
       doSerialization(SimpleOptionMessage(Some(true), Some(1.toByte), Some(2.toShort), Some(3), Some(4L), Some(2.2), Some(4.4f),
         Some("OMG String here !!"), Some(new ObjectId()), Some(Id.generate),
         Some(new Date(System.currentTimeMillis())), Some(Calendar.getInstance()), Some(new DateTime(0)), Some(EnumForTest.ENUM_ONE),

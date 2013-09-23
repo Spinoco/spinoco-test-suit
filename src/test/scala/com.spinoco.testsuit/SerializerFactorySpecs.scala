@@ -1,6 +1,8 @@
 package com.spinoco.testsuit
 
 import reflect.runtime.universe._
+import scala.pickling._
+
 /**
  * 
  * User: pach
@@ -16,8 +18,8 @@ trait SerializerFactorySpecs extends SpinocoSpec {
    * @param msgTest
    * @tparam T
    */
-  def doSerialization[T <: Product](msg: T, msgTest: (T) => Unit = null)(implicit tt:TypeTag[T]) = doSerializationWithType(msg,tt.tpe, msgTest) : Unit
+  def doSerialization[T : SPickler : FastTypeTag](msg: T, msgTest: (T) => Unit = null) = doSerializationWithType(msg, msgTest) : Unit
 
-  def doSerializationWithType[T <: Product](msg: T, tpe:Type, msgTest: (T) => Unit = null) : Unit
+  def doSerializationWithType[T : SPickler : FastTypeTag](msg: T, msgTest: (T) => Unit = null) : Unit
 
 }

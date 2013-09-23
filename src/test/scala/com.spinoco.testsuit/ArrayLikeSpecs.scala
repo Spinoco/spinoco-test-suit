@@ -13,7 +13,7 @@ import org.joda.time.DateTime
  * (c) 2011-2012 Spinoco Czech Republic, a.s.
  */
 trait ArrayLikeSpecs extends SerializerFactorySpecs {
-
+/*
   def arrayLikeTests() = {
 
     ////ARRAY
@@ -326,5 +326,5 @@ trait ArrayLikeSpecs extends SerializerFactorySpecs {
 
   }
 
-
+*/
 }

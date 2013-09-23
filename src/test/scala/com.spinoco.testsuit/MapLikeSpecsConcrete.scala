@@ -3,6 +3,7 @@ package com.spinoco.testsuit
 import java.util.Date
 import org.bson.types.ObjectId
 import reflect.runtime.universe._
+import scala.pickling.FastTypeTag
 
 /**
  *
@@ -12,7 +13,7 @@ import reflect.runtime.universe._
  * (c) 2011-2012 Spinoco Czech Republic, a.s.
  */
 trait MapLikeSpecsConcrete extends MapLikeSpecs {
-
+/*
   def mapTests() {
 
     describe("String Map") {makeTestFor[String]}
@@ -31,13 +32,13 @@ trait MapLikeSpecsConcrete extends MapLikeSpecs {
   }
 
 
-  def makeTestFor[K: TypeTag] = {
+  def makeTestFor[K: FastTypeTag] = {
 
     val messages = prepareMapTest[K]
 
     messages.filterNot(_._1.contains("Array")).foreach(tm => {
       it("will serialize " + tm._1) {
-        doSerializationWithType(tm._2._2, tm._2._1)
+        doSerializationWithType(tm._2._2)
       }
     })
 
@@ -64,19 +65,19 @@ trait MapLikeSpecsConcrete extends MapLikeSpecs {
     it("will serialize SimpleMapArrayMessage Empty") {
       val tm = messages("SimpleMapArrayMessage Empty")
       val msg = tm._2.asInstanceOf[SimpleMapArrayMessage[K]]
-      doSerializationWithType[SimpleMapArrayMessage[K]](msg, tm._1, compareSimpleMapArrayMessage(msg))
+      doSerializationWithType[SimpleMapArrayMessage[K]](msg, compareSimpleMapArrayMessage(msg))
     }
 
     it("will serialize SimpleMapArrayMessage Full") {
       val tm = messages("SimpleMapArrayMessage Full")
       val msg = tm._2.asInstanceOf[SimpleMapArrayMessage[K]]
-      doSerializationWithType[SimpleMapArrayMessage[K]](msg, tm._1, compareSimpleMapArrayMessage(msg))
+      doSerializationWithType[SimpleMapArrayMessage[K]](msg, compareSimpleMapArrayMessage(msg))
     }
 
     it("will serialize SimpleMapArrayMessage Empty Map") {
       val tm = messages("SimpleMapArrayMessage Empty Map")
       val msg = tm._2.asInstanceOf[SimpleMapArrayMessage[K]]
-      doSerializationWithType[SimpleMapArrayMessage[K]](msg, tm._1, compareSimpleMapArrayMessage(msg))
+      doSerializationWithType[SimpleMapArrayMessage[K]](msg, compareSimpleMapArrayMessage(msg))
     }
 
     def compareSimpleMapArrayValueMessage(msg: SimpleMapArrayValueMessage[K]) = {
@@ -110,15 +111,15 @@ trait MapLikeSpecsConcrete extends MapLikeSpecs {
     it("will serialize SimpleMapArrayValueMessage Full") {
       val tm = messages("SimpleMapArrayValueMessage Full")
       val msg = tm._2.asInstanceOf[SimpleMapArrayValueMessage[K]]
-      doSerializationWithType[SimpleMapArrayValueMessage[K]](msg, tm._1, compareSimpleMapArrayValueMessage(msg))
+      doSerializationWithType[SimpleMapArrayValueMessage[K]](msg,  compareSimpleMapArrayValueMessage(msg))
     }
 
     it("will serialize SimpleMapArrayValueMessage Empty Value") {
       val tm = messages("SimpleMapArrayValueMessage Empty Value")
       val msg = tm._2.asInstanceOf[SimpleMapArrayValueMessage[K]]
-      doSerializationWithType[SimpleMapArrayValueMessage[K]](msg, tm._1, compareSimpleMapArrayValueMessage(msg))
+      doSerializationWithType[SimpleMapArrayValueMessage[K]](msg,  compareSimpleMapArrayValueMessage(msg))
     }
 
   }
-
+ */
 }

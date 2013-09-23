@@ -15,7 +15,7 @@ import reflect.ClassTag
  * (c) 2011-2012 Spinoco Czech Republic, a.s.
  */
 trait MapLikeSpecs extends BasicSerializerSpecs {
-
+/*
   def prepareMapTest[K](implicit keyTypeTag: TypeTag[K]) = {
 
     val mapValues =
@@ -489,5 +489,5 @@ trait MapLikeSpecs extends BasicSerializerSpecs {
 
   }
 
-
+*/
 }

@@ -3,6 +3,8 @@ package com.spinoco.testsuit.pickling
 import com.spinoco.testsuit.CommonSerializerSpecs
 
 import reflect.runtime.universe._
+import scala.pickling._
+import json._
 /**
  *
  * User: pach
@@ -14,14 +16,14 @@ class PicklingSerializerSpec extends CommonSerializerSpecs {
 
   describe("Pickling spec") {
     basicTests()
-    arrayLikeTests()
-    mapTests()
+    //arrayLikeTests()
+    //mapTests()
   }
 
 
-  def doSerializationWithType[T <: Product](msg: T, tpe: Type, msgTest: (T) => Unit) {
+  def doSerializationWithType[T : SPickler : FastTypeTag ](msg: T, msgTest: (T) => Unit) {
 
-    //val serialized = msg.pickle
+    val serialized = msg.pickle
 
     //val deserialized = serialized.unpickle[T]
 

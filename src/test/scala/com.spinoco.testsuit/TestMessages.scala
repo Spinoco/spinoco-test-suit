@@ -198,7 +198,7 @@ case class SimpleMapSeqValueMessage[K](boolPar: Map[K, Seq[Boolean]],
 
 case class SimpleStringMessage(str: String) extends ProtocolTest
 
-trait ProtocolTest extends Product
+trait ProtocolTest
 
 
 object EnumForTest extends Enumeration {
